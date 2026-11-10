@@ -34,9 +34,9 @@ Format: `tipus: descripció`
 - `style`: canvis de CSS/disseny
 - `refactor`: millora del codi
 ## Versions
-- `v1.0` – Seguiment 1
-- `v1.1` – Seguiment 2
-- `v1.2` – Entrega final
+- `v1.0` - Seguiment 1
+- `v1.1` - Seguiment 2
+- `v1.2` - Entrega final
 ## Documentació
 - [Planificació](docs/planificacio.md)
 - [Actes de reunions](docs/actes.md)
