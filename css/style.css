@@ -1,0 +1,498 @@
+/* ===== Colors i valors del mockup ===== */
+:root {
+  --lila-fosc: #4338CA;
+  --lila: #7C3AED;
+  --groc: #FBBF24;
+  --text: #1E1B4B;
+  --gris: #6B7280;
+  --gris-clar: #F9FAFB;
+  --vora: #D1D5DB;
+  --lila-clar: #EEF2FF;
+  --verd: #16A34A;
+  --verd-clar: #DCFCE7;
+  --taronja: #EA580C;
+  --taronja-clar: #FFEDD5;
+  --vermell: #DC2626;
+  --vermell-clar: #FEE2E2;
+  --ombra: 0 12px 32px rgba(18, 13, 64, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  background: linear-gradient(90deg, var(--lila-fosc), var(--lila));
+  overflow-x: hidden;
+}
+
+/* Interrogants grans del fons (només decoració) */
+body::before,
+body::after {
+  content: "?";
+  position: fixed;
+  font-size: 360px;
+  font-weight: 700;
+  line-height: 1;
+  color: white;
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+body::before {
+  left: 40px;
+  bottom: -60px;
+  transform: rotate(-14deg);
+}
+
+body::after {
+  right: 40px;
+  top: -80px;
+  transform: rotate(12deg);
+}
+
+/* ===== Pantalles ===== */
+/* Només es veu la pantalla que té la classe "activa" */
+.pantalla {
+  display: none;
+  min-height: 100vh;
+  padding: 40px 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.pantalla.activa {
+  display: flex;
+}
+
+/* ===== Elements que es repeteixen ===== */
+.targeta {
+  background: white;
+  border-radius: 24px;
+  box-shadow: var(--ombra);
+}
+
+.boto {
+  width: 100%;
+  padding: 16px 32px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, filter 0.2s;
+}
+
+.boto:hover {
+  filter: brightness(0.95);
+}
+
+.boto:active {
+  transform: scale(0.98);
+}
+
+.boto-principal {
+  background: var(--groc);
+  color: var(--text);
+}
+
+.boto-secundari {
+  background: white;
+  color: var(--lila-fosc);
+  border-color: var(--lila-fosc);
+}
+
+/* ===== 1. Inici ===== */
+.targeta-inici {
+  width: 100%;
+  max-width: 480px;
+  padding: 48px;
+  text-align: center;
+}
+
+.logo {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: var(--groc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 46px;
+  font-weight: 700;
+}
+
+.titol-joc {
+  font-size: 44px;
+  color: var(--lila-fosc);
+}
+
+.subtitol {
+  margin-top: 12px;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--gris);
+}
+
+.camp {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.camp label {
+  font-weight: 600;
+}
+
+.camp input {
+  padding: 14px 16px;
+  border: 2px solid var(--vora);
+  border-radius: 12px;
+  background: var(--gris-clar);
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.camp input:focus {
+  outline: none;
+  border-color: var(--lila-fosc);
+}
+
+.camp .boto {
+  margin-top: 24px;
+}
+
+.error {
+  color: var(--vermell);
+  font-size: 14px;
+}
+
+.error:empty {
+  display: none;
+}
+
+/* ===== 2. Tria de tema ===== */
+.salutacio {
+  font-size: 52px;
+  color: white;
+  text-align: center;
+}
+
+.subtitol-blanc {
+  margin-top: 6px;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+}
+
+.temes {
+  margin-top: 44px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.tema {
+  width: 340px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.tema h3 {
+  font-size: 30px;
+}
+
+.tema p {
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--gris);
+}
+
+.icona-tema {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icona-tema svg {
+  width: 52px;
+  height: 52px;
+}
+
+.icona-esports {
+  background: var(--verd-clar);
+  color: var(--verd);
+}
+
+.icona-menjar {
+  background: var(--taronja-clar);
+  color: var(--taronja);
+}
+
+.info-tema {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--lila-fosc);
+}
+
+.enllac {
+  margin-top: 44px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ===== 3. Pregunta ===== */
+.joc {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.capcalera-joc {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.barra-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}
+
+.etiqueta {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--verd);
+  font-size: 16px;
+}
+
+.temps {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: white;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.temps svg {
+  width: 20px;
+  height: 20px;
+  color: #D97706;
+}
+
+.barra-temps {
+  height: 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+/* L'amplada d'aquesta barra la canviarà el temporitzador (de 100% a 0%) */
+.barra-temps-restant {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background: var(--groc);
+  transition: width 1s linear;
+}
+
+.targeta-pregunta {
+  padding: 48px;
+  text-align: center;
+}
+
+.targeta-pregunta h2 {
+  font-size: 36px;
+  line-height: 1.3;
+}
+
+.opcions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.opcio {
+  padding: 18px 24px;
+  border: 2px solid #E0E7FF;
+  border-radius: 16px;
+  background: white;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.opcio:hover {
+  border-color: var(--lila-fosc);
+}
+
+.lletra {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--lila-clar);
+  color: var(--lila-fosc);
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.punts {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+/* ===== 4. Resultats ===== */
+.targeta-resultats {
+  width: 100%;
+  max-width: 560px;
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.targeta-resultats h2 {
+  font-size: 36px;
+}
+
+.tema-resultats {
+  margin-top: 4px;
+  color: var(--gris);
+}
+
+.cercle-puntuacio {
+  width: 168px;
+  height: 168px;
+  margin-top: 24px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, var(--lila-fosc), var(--lila));
+  color: white;
+  font-size: 54px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-puntuacio {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--gris);
+}
+
+.resum {
+  width: 100%;
+  margin-top: 24px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resum li {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.resum li::before {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.resum .correcta {
+  background: var(--verd-clar);
+}
+
+.resum .correcta::before {
+  content: "✓";
+  color: var(--verd);
+}
+
+.resum .incorrecta {
+  background: var(--vermell-clar);
+}
+
+.resum .incorrecta::before {
+  content: "✗";
+  color: var(--vermell);
+}
+
+.resum-text {
+  flex: 1;
+}
+
+.resum-estat {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.correcta .resum-estat {
+  color: var(--verd);
+}
+
+.incorrecta .resum-estat {
+  color: var(--vermell);
+}
+
+.botons {
+  width: 100%;
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+}
