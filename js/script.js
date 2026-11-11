@@ -62,13 +62,109 @@ document.getElementById("boto-canviar-nom").addEventListener("click", function (
 
 
 // ===== 3. Joc principal (Biel) =====
-// TODO: mostrar la pregunta i les opcions, comprovar la resposta,
-// sumar punts i passar a la següent
+const etiquetaTema = document.getElementById("etiqueta-tema");
+const comptador = document.getElementById("comptador");
+const textPregunta = document.getElementById("text-pregunta");
+const contenidorOpcions = document.getElementById("opcions");
+const textPunts = document.getElementById("punts");
+const lletres = ["A", "B", "C", "D"];
+
+// La crida la tria de tema (Anthony) quan es clica Jugar
+function comencarJoc() {
+  llistaPreguntes = preguntes[temaActual];
+  preguntaActual = 0;
+  punts = 0;
+  respostes = [];
+
+  etiquetaTema.textContent = temaActual === "esports" ? "Esports" : "Menjar";
+  mostrarPantalla("pantalla-pregunta");
+  mostrarPregunta();
+}
+
+// Posa a la pantalla la pregunta que toca i les seves opcions
+function mostrarPregunta() {
+  const pregunta = llistaPreguntes[preguntaActual];
+
+  comptador.textContent = "Pregunta " + (preguntaActual + 1) + " de " + llistaPreguntes.length;
+  textPregunta.textContent = pregunta.pregunta;
+  textPunts.textContent = punts;
+
+  contenidorOpcions.innerHTML = ""; // treure les opcions d'abans
+  pregunta.opcions.forEach(function (opcio, index) {
+    const boto = document.createElement("button");
+    boto.className = "opcio";
+
+    const lletra = document.createElement("span");
+    lletra.className = "lletra";
+    lletra.textContent = lletres[index];
+
+    boto.appendChild(lletra);
+    boto.appendChild(document.createTextNode(opcio));
+    boto.addEventListener("click", function () {
+      respondre(index);
+    });
+
+    contenidorOpcions.appendChild(boto);
+  });
+
+  iniciarTemporitzador();
+}
+
+// index = posició de l'opció triada (-1 si s'ha acabat el temps)
+function respondre(index) {
+  aturarTemporitzador();
+
+  const pregunta = llistaPreguntes[preguntaActual];
+  const encertada = index === pregunta.correcta;
+  if (encertada) {
+    punts++;
+  }
+
+  // per al resum de la pantalla de resultats
+  respostes.push({ pregunta: pregunta.pregunta, encertada: encertada });
+
+  preguntaActual++;
+  if (preguntaActual < llistaPreguntes.length) {
+    mostrarPregunta();
+  } else {
+    mostrarResultats(); // la fa l'Anthony
+  }
+}
 
 
 // ===== Temporitzador (Biel) =====
-// TODO: compte enrere de TEMPS_PER_PREGUNTA segons per a cada pregunta.
-// Si s'acaba el temps, compta com a fallada i es passa a la següent.
+const textTemps = document.getElementById("temps");
+const barraTemps = document.getElementById("barra-temps-restant");
+let tempsRestant = 0;
+
+function iniciarTemporitzador() {
+  aturarTemporitzador();
+  tempsRestant = TEMPS_PER_PREGUNTA;
+
+  // la barra torna a estar plena de cop, sense animació
+  barraTemps.style.transition = "none";
+  actualitzarTemps();
+  barraTemps.offsetWidth; // força el navegador a aplicar el canvi
+  barraTemps.style.transition = "";
+
+  temporitzador = setInterval(function () {
+    tempsRestant--;
+    actualitzarTemps();
+
+    if (tempsRestant <= 0) {
+      respondre(-1); // s'ha acabat el temps: compta com a fallada
+    }
+  }, 1000);
+}
+
+function aturarTemporitzador() {
+  clearInterval(temporitzador);
+}
+
+function actualitzarTemps() {
+  textTemps.textContent = tempsRestant;
+  barraTemps.style.width = (tempsRestant / TEMPS_PER_PREGUNTA) * 100 + "%";
+}
 
 
 // ===== 4. Resultats i tornar a jugar (Anthony) =====
