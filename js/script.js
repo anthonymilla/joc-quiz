@@ -46,8 +46,19 @@ formNom.addEventListener("submit", function (event) {
 
 
 // ===== 2. Tria de tema (Anthony) =====
-// TODO: mostrar "Hola, [nom]!" i, en clicar Jugar, guardar el tema (data-tema)
-// i començar el joc
+const botonsTema = document.querySelectorAll("[data-tema]");
+
+botonsTema.forEach(function (boto) {
+  boto.addEventListener("click", function () {
+    temaActual = boto.dataset.tema;
+    comencarJoc(); // aquesta funció la fa el Biel
+  });
+});
+
+document.getElementById("boto-canviar-nom").addEventListener("click", function () {
+  mostrarPantalla("pantalla-inici");
+  inputNom.focus();
+});
 
 
 // ===== 3. Joc principal (Biel) =====
