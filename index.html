@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joc Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+
+    <!-- ===== Pantalla 1: Inici ===== -->
+    <section id="pantalla-inici" class="pantalla activa">
+      <div class="targeta targeta-inici">
+        <div class="logo">?</div>
+        <h1 class="titol-joc">Joc Quiz</h1>
+        <p class="subtitol">Posa a prova el que saps d'esports i de menjar</p>
+
+        <form id="form-nom" class="camp">
+          <label for="input-nom">Com et dius?</label>
+          <input type="text" id="input-nom" placeholder="Escriu el teu nom" autocomplete="off">
+          <p id="error-nom" class="error"></p>
+          <button type="submit" class="boto boto-principal">Començar</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== Pantalla 2: Tria de tema ===== -->
+    <section id="pantalla-tema" class="pantalla">
+      <h2 class="salutacio">Hola, <span id="nom-jugador">Biel</span>!</h2>
+      <p class="subtitol-blanc">Tria de quin tema vols les preguntes</p>
+
+      <div class="temes">
+        <article class="targeta tema">
+          <div class="icona-tema icona-esports">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          </div>
+          <h3>Esports</h3>
+          <p>Preguntes sobre futbol, bàsquet, tennis i altres esports</p>
+          <span class="info-tema">15 s per pregunta</span>
+          <button class="boto boto-principal" data-tema="esports">Jugar</button>
+        </article>
+
+        <article class="targeta tema">
+          <div class="icona-tema icona-menjar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+          </div>
+          <h3>Menjar</h3>
+          <p>Preguntes sobre plats, aliments i cuina de tot el món</p>
+          <span class="info-tema">15 s per pregunta</span>
+          <button class="boto boto-principal" data-tema="menjar">Jugar</button>
+        </article>
+      </div>
+
+      <button id="boto-canviar-nom" class="enllac">Canviar de nom</button>
+    </section>
+
+    <!-- ===== Pantalla 3: Pregunta ===== -->
+    <section id="pantalla-pregunta" class="pantalla">
+      <div class="joc">
+        <div class="capcalera-joc">
+          <div class="barra-info">
+            <span id="etiqueta-tema" class="etiqueta">Esports</span>
+            <span id="comptador">Pregunta 1 de 3</span>
+            <span class="temps">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg>
+              <span id="temps">15</span> s
+            </span>
+          </div>
+          <div class="barra-temps">
+            <div id="barra-temps-restant" class="barra-temps-restant"></div>
+          </div>
+        </div>
+
+        <div class="targeta targeta-pregunta">
+          <h2 id="text-pregunta">Aquí anirà el text de la pregunta</h2>
+        </div>
+
+        <!-- Les opcions les crearà el JavaScript. Aquestes són d'exemple per veure el disseny. -->
+        <div id="opcions" class="opcions">
+          <button class="opcio"><span class="lletra">A</span>Opció 1</button>
+          <button class="opcio"><span class="lletra">B</span>Opció 2</button>
+          <button class="opcio"><span class="lletra">C</span>Opció 3</button>
+          <button class="opcio"><span class="lletra">D</span>Opció 4</button>
+        </div>
+
+        <p class="punts">Punts: <span id="punts">0</span></p>
+      </div>
+    </section>
+
+    <!-- ===== Pantalla 4: Resultats ===== -->
+    <section id="pantalla-resultats" class="pantalla">
+      <div class="targeta targeta-resultats">
+        <h2>Has acabat, <span id="nom-resultats">Biel</span>!</h2>
+        <p class="tema-resultats">Tema: <span id="tema-resultats">Esports</span></p>
+
+        <div class="cercle-puntuacio"><span id="puntuacio">0/3</span></div>
+        <p class="text-puntuacio">respostes correctes</p>
+
+        <!-- El JavaScript hi posarà una línia per cada pregunta. Aquestes són d'exemple. -->
+        <ul id="resum" class="resum">
+          <li class="correcta"><span class="resum-text">Pregunta d'exemple 1</span><span class="resum-estat">Correcta</span></li>
+          <li class="incorrecta"><span class="resum-text">Pregunta d'exemple 2</span><span class="resum-estat">Incorrecta</span></li>
+        </ul>
+
+        <div class="botons">
+          <button id="boto-tornar" class="boto boto-principal">Tornar a jugar</button>
+          <button id="boto-sortir" class="boto boto-secundari">Sortir</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/preguntes.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
