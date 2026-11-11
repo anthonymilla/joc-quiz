@@ -25,8 +25,24 @@ function mostrarPantalla(id) {
 
 
 // ===== 1. Inici (Anthony) =====
-// TODO: quan s'envia el formulari, comprovar que el nom no estigui buit,
-// guardar-lo a nomJugador i anar a la pantalla de tema
+const formNom = document.getElementById("form-nom");
+const inputNom = document.getElementById("input-nom");
+const errorNom = document.getElementById("error-nom");
+
+formNom.addEventListener("submit", function (event) {
+  event.preventDefault(); // perquè la pàgina no es recarregui
+
+  const nom = inputNom.value.trim();
+  if (nom === "") {
+    errorNom.textContent = "Has d'escriure el teu nom";
+    return;
+  }
+
+  errorNom.textContent = "";
+  nomJugador = nom;
+  document.getElementById("nom-jugador").textContent = nomJugador;
+  mostrarPantalla("pantalla-tema");
+});
 
 
 // ===== 2. Tria de tema (Anthony) =====
