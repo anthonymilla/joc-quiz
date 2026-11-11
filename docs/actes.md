@@ -1,6 +1,6 @@
 # Actes de reunions
 
-## Reunió 1 – 10/11/2026
+## Reunió 1 - 05/11/2026
 **Assistents:** Biel Pérez, Anthony Milla
 
 **Temes tractats:**
@@ -9,8 +9,8 @@
 - Planificació fins al primer seguiment
 
 **Acords:**
-- Anthony s'encarrega de GitHub i de les pantalles d'accés, resultats i tornar a jugar
-- Biel s'encarrega del disseny i de la lògica del joc
-- Categories de preguntes: Esports i Menjar
+- Anthony s'encarrega de GitHub i de les pantalles d'inici, resultats i tornar a jugar
+- Biel s'encarrega del disseny i de la part del joc
+- Temes de preguntes: esports i menjar
 
 **Pròxima reunió:** 12/11/2026 (Seguiment 1)

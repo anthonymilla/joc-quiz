@@ -1,50 +1,32 @@
-# Planificació – Joc Quiz
+# Planificació - Joc Quiz
 
-## Rols
+## Repartiment de feina
+- **Anthony Milla**: GitHub (repositori, branques, Project, issues, pull requests i tags) i pantalles d'inici, resultats i tornar a jugar. Preguntes de menjar.
+- **Biel Pérez**: disseny (mockup, HTML i CSS) i part del joc (preguntes, respostes i temporitzador). Preguntes d'esports.
 
-| Membre | Rol | Feines principals |
+## Seguiment 1 (12/11)
+| Data | Biel | Anthony |
 |---|---|---|
-| Anthony Milla | Responsable de GitHub + pantalles | Repo, branques, Project, PRs, tags. JS d'accés, resultats i tornar a jugar |
-| Biel Pérez | Disseny UI + lògica del joc | Mockup, HTML i CSS. JS del joc principal i temporitzador |
+| Dj 5/11 | Llegir l'enunciat i fer la planificació | Llegir l'enunciat i fer la planificació |
+| Dv 6/11 | Mockup de les pantalles | Preguntes de menjar |
+| Dl 9/11 | Preguntes d'esports | Preparar el README i les actes |
+| Dt 10/11 | Estructura base (HTML, CSS i JS) | Repositori, branques, Project i issues |
+| Dc 11/11 | Joc principal (preguntes i respostes) | Pantalla d'inici i tria de tema |
+| Dj 12/11 | Temporitzador i proves | Resultats i tornar a jugar, merge a main i tag v1.0 |
 
-Preguntes: Biel → categoria Esports · Anthony → categoria Menjar
+## Seguiment 2 (19/11)
+- Biel: pàgina responsive
+- Anthony: color quan la resposta és correcta o no
+- Tots dos: provar el joc i arreglar errors
+- Tag v1.1
 
-## Seguiment 1 – 12 de novembre
+## Entrega final (26/11)
+- Tots dos: comentar el codi
+- Anthony: README final amb les instruccions
+- Biel: repassar el disseny
+- Tag v1.2
 
-| Tasca | Responsable | Data |
-|---|---|---|
-| Planificació i repartiment de rols | Tots dos | 10/11 |
-| Crear repo + README inicial | Anthony | 10/11 |
-| Crear branques main / test / biel / anthony | Anthony | 10/11 |
-| Mockup de les 4 pantalles | Biel | 10/11 |
-| GitHub Project + issues + milestones | Anthony | 11/11 |
-| Estructura base (HTML, CSS, JS) | Biel | 11/11 |
-| Accés: nom + "Hola [nom]" + botons de tipus | Anthony | 11/11 |
-| Joc principal + gestió de preguntes | Biel | 11/11 |
-| Pantalla de resultats + tornar a jugar | Anthony | 12/11 |
-| Temporitzador per pregunta | Biel | 12/11 |
-| Merge a main + tag v1.0 | Anthony | 12/11 |
-
-## Seguiment 2 – 19 de novembre (a confirmar)
-
-| Tasca | Responsable |
-|---|---|
-| Disseny responsive (mòbil i tauleta) | Biel |
-| Avís visual d'encert / error | Anthony |
-| Proves i correcció d'errors | Tots dos |
-| Merge a main + tag v1.1 | Anthony |
-
-## Entrega final – 26 de novembre (a confirmar)
-
-| Tasca | Responsable |
-|---|---|
-| Comentaris al codi | Tots dos |
-| README final amb instruccions | Anthony |
-| Revisió final del disseny | Biel |
-| Tag v1.2 | Anthony |
-
-## Flux de treball
+## Com treballem
 1. Cadascú treballa a la seva branca (`biel` / `anthony`).
-2. Quan una tasca està feta → Pull Request cap a `test`.
-3. L'altre membre la revisa i l'aprova.
-4. Quan `test` funciona → merge a `main` + tag de versió.
+2. Quan acabem una tasca fem una pull request cap a `test` i l'altre la revisa.
+3. Quan `test` funciona ho passem a `main` i posem el tag.
