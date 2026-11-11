@@ -72,9 +72,43 @@ document.getElementById("boto-canviar-nom").addEventListener("click", function (
 
 
 // ===== 4. Resultats i tornar a jugar (Anthony) =====
-// TODO: mostrar la puntuació i el resum de respostes,
-// i fer funcionar els botons de tornar a jugar i sortir
+function mostrarResultats() {
+  document.getElementById("nom-resultats").textContent = nomJugador;
+  document.getElementById("tema-resultats").textContent = temaActual === "esports" ? "Esports" : "Menjar";
+  document.getElementById("puntuacio").textContent = punts + "/" + llistaPreguntes.length;
 
+  const resum = document.getElementById("resum");
+  resum.innerHTML = ""; // treure les línies d'exemple
+
+  respostes.forEach(function (resposta) {
+    const li = document.createElement("li");
+    li.className = resposta.encertada ? "correcta" : "incorrecta";
+
+    const text = document.createElement("span");
+    text.className = "resum-text";
+    text.textContent = resposta.pregunta;
+
+    const estat = document.createElement("span");
+    estat.className = "resum-estat";
+    estat.textContent = resposta.encertada ? "Correcta" : "Incorrecta";
+
+    li.appendChild(text);
+    li.appendChild(estat);
+    resum.appendChild(li);
+  });
+
+  mostrarPantalla("pantalla-resultats");
+}
+
+document.getElementById("boto-tornar").addEventListener("click", function () {
+  mostrarPantalla("pantalla-tema");
+});
+
+document.getElementById("boto-sortir").addEventListener("click", function () {
+  nomJugador = "";
+  inputNom.value = "";
+  mostrarPantalla("pantalla-inici");
+});
 
 // Pantalla que es veu en obrir el joc.
 // Mentre programem, es pot canviar l'id per provar una altra pantalla.
