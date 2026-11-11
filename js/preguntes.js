@@ -20,7 +20,21 @@ const preguntes = {
       pregunta: "D'on és típica la paella?",
       opcions: ["València", "Galícia", "Astúries", "Andalusia"],
       correcta: 0
+    },
+    {
+      pregunta: "Quin és l'ingredient principal del guacamole?",
+      opcions: ["Tomàquet", "Alvocat", "Ceba", "Pebrot"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quin d'aquests elements NO porta una truita de patates tradicional?",
+      opcions: ["Ou", "Patata", "Chorizo", "Ceba"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quin d'aquests plats és un postre típic català?",
+      opcions: ["Crema catalana", "Gaspatxo", "Fabada", "Paella"],
+      correcta: 0
     }
-    // TODO (Anthony): afegir més preguntes de menjar
   ]
 };
