@@ -21,6 +21,11 @@ function mostrarPantalla(id) {
   });
 
   document.getElementById(id).classList.add("activa");
+
+  // Fora de la partida, el joc torna als colors de sempre (lila)
+  if (id === "pantalla-inici" || id === "pantalla-tema") {
+    document.body.classList.remove("tema-esports", "tema-menjar");
+  }
 }
 
 
@@ -67,6 +72,7 @@ const comptador = document.getElementById("comptador");
 const textPregunta = document.getElementById("text-pregunta");
 const contenidorOpcions = document.getElementById("opcions");
 const textPunts = document.getElementById("punts");
+const progresPunts = document.getElementById("progres-punts");
 const lletres = ["A", "B", "C", "D"];
 
 // La crida la tria de tema (Anthony) quan es clica Jugar
@@ -75,6 +81,10 @@ function comencarJoc() {
   preguntaActual = 0;
   punts = 0;
   respostes = [];
+
+  // colors del tema triat (verd per a esports, taronja per a menjar)
+  document.body.classList.remove("tema-esports", "tema-menjar");
+  document.body.classList.add("tema-" + temaActual);
 
   etiquetaTema.textContent = temaActual === "esports" ? "Esports" : "Menjar";
   mostrarPantalla("pantalla-pregunta");
@@ -88,6 +98,19 @@ function mostrarPregunta() {
   comptador.textContent = "Pregunta " + (preguntaActual + 1) + " de " + llistaPreguntes.length;
   textPregunta.textContent = pregunta.pregunta;
   textPunts.textContent = punts;
+
+  // una ratlleta per pregunta: verda o vermella les fetes, blanca la que toca
+  progresPunts.innerHTML = "";
+  llistaPreguntes.forEach(function (p, i) {
+    const punt = document.createElement("span");
+    punt.className = "punt";
+    if (i < preguntaActual) {
+      punt.classList.add(respostes[i].encertada ? "encert" : "error");
+    } else if (i === preguntaActual) {
+      punt.classList.add("actual");
+    }
+    progresPunts.appendChild(punt);
+  });
 
   contenidorOpcions.innerHTML = ""; // treure les opcions d'abans
   pregunta.opcions.forEach(function (opcio, index) {
@@ -127,25 +150,41 @@ function respondre(index) {
   if (preguntaActual < llistaPreguntes.length) {
     mostrarPregunta();
   } else {
+    // per a l'anell de la pantalla de resultats
+    const percentatge = Math.round((punts / llistaPreguntes.length) * 100);
+    document.body.style.setProperty("--percentatge", percentatge);
     mostrarResultats(); // la fa l'Anthony
   }
 }
 
+// També es pot respondre amb el teclat: A, B, C o D
+document.addEventListener("keydown", function (event) {
+  if (!document.getElementById("pantalla-pregunta").classList.contains("activa")) {
+    return;
+  }
+  const posicio = ["a", "b", "c", "d"].indexOf(event.key.toLowerCase());
+  if (posicio !== -1 && posicio < llistaPreguntes[preguntaActual].opcions.length) {
+    respondre(posicio);
+  }
+});
+
 
 // ===== Temporitzador (Biel) =====
 const textTemps = document.getElementById("temps");
-const barraTemps = document.getElementById("barra-temps-restant");
+const rellotge = document.getElementById("rellotge");
+const arcRellotge = document.getElementById("rellotge-arc");
+const LLARGADA_ARC = 2 * Math.PI * 19; // perímetre del cercle (radi 19)
 let tempsRestant = 0;
 
 function iniciarTemporitzador() {
   aturarTemporitzador();
   tempsRestant = TEMPS_PER_PREGUNTA;
 
-  // la barra torna a estar plena de cop, sense animació
-  barraTemps.style.transition = "none";
+  // el cercle torna a estar ple de cop, sense animació
+  arcRellotge.style.transition = "none";
   actualitzarTemps();
-  barraTemps.offsetWidth; // força el navegador a aplicar el canvi
-  barraTemps.style.transition = "";
+  arcRellotge.getBoundingClientRect(); // força el navegador a aplicar el canvi
+  arcRellotge.style.transition = "";
 
   temporitzador = setInterval(function () {
     tempsRestant--;
@@ -163,7 +202,21 @@ function aturarTemporitzador() {
 
 function actualitzarTemps() {
   textTemps.textContent = tempsRestant;
-  barraTemps.style.width = (tempsRestant / TEMPS_PER_PREGUNTA) * 100 + "%";
+
+  // l'arc es va buidant a mesura que passa el temps
+  const fet = 1 - tempsRestant / TEMPS_PER_PREGUNTA;
+  arcRellotge.style.strokeDashoffset = LLARGADA_ARC * fet;
+
+  // verd, groc o vermell segons el temps que queda, i batega els últims 5 segons
+  rellotge.classList.remove("groc", "vermell", "batec");
+  if (tempsRestant <= 5) {
+    rellotge.classList.add("vermell");
+    if (tempsRestant > 0) {
+      rellotge.classList.add("batec");
+    }
+  } else if (tempsRestant <= 9) {
+    rellotge.classList.add("groc");
+  }
 }
 
 

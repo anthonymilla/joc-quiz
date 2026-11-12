@@ -6,25 +6,60 @@
   <title>Joc Quiz</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Taques de color del fons (només decoració) -->
+  <div class="fons" aria-hidden="true">
+    <span class="taca taca-1"></span>
+    <span class="taca taca-2"></span>
+    <span class="taca taca-3"></span>
+  </div>
+
   <main>
 
     <!-- ===== Pantalla 1: Inici ===== -->
     <section id="pantalla-inici" class="pantalla activa">
-      <div class="targeta targeta-inici">
-        <div class="logo">?</div>
-        <h1 class="titol-joc">Joc Quiz</h1>
-        <p class="subtitol">Posa a prova el que saps d'esports i de menjar</p>
+      <div class="inici">
+        <div class="inici-text">
+          <span class="xip">2 temes · 15 segons per pregunta</span>
+          <h1 class="titol-joc">Joc <span>Quiz</span></h1>
+          <p class="subtitol">Posa a prova el que saps d'esports i de menjar. Respon abans que s'acabi el temps i intenta encertar-les totes.</p>
 
-        <form id="form-nom" class="camp">
-          <label for="input-nom">Com et dius?</label>
-          <input type="text" id="input-nom" placeholder="Escriu el teu nom" autocomplete="off">
-          <p id="error-nom" class="error"></p>
-          <button type="submit" class="boto boto-principal">Començar</button>
-        </form>
+          <ul class="caracteristiques">
+            <li>
+              <span class="icona-petita">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+              </span>
+              Tria el tema
+            </li>
+            <li>
+              <span class="icona-petita">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg>
+              </span>
+              Contra rellotge
+            </li>
+            <li>
+              <span class="icona-petita">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+              </span>
+              Mira els resultats
+            </li>
+          </ul>
+        </div>
+
+        <div class="targeta targeta-inici">
+          <h2>Comencem!</h2>
+          <p class="text-suau">Escriu el teu nom per començar a jugar.</p>
+
+          <form id="form-nom" class="camp">
+            <label for="input-nom">Com et dius?</label>
+            <input type="text" id="input-nom" placeholder="Escriu el teu nom" autocomplete="off">
+            <p id="error-nom" class="error"></p>
+            <button type="submit" class="boto boto-principal">Començar</button>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -34,24 +69,28 @@
       <p class="subtitol-blanc">Tria de quin tema vols les preguntes</p>
 
       <div class="temes">
-        <article class="targeta tema">
-          <div class="icona-tema icona-esports">
+        <article class="targeta tema tema-esports">
+          <div class="tema-capcalera">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
           </div>
-          <h3>Esports</h3>
-          <p>Preguntes sobre futbol, bàsquet, tennis i altres esports</p>
-          <span class="info-tema">15 s per pregunta</span>
-          <button class="boto boto-principal" data-tema="esports">Jugar</button>
+          <div class="tema-cos">
+            <h3>Esports</h3>
+            <p>Preguntes sobre futbol, bàsquet, tennis i altres esports</p>
+            <span class="info-tema">15 s per pregunta</span>
+            <button class="boto boto-principal" data-tema="esports">Jugar</button>
+          </div>
         </article>
 
-        <article class="targeta tema">
-          <div class="icona-tema icona-menjar">
+        <article class="targeta tema tema-menjar">
+          <div class="tema-capcalera">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
           </div>
-          <h3>Menjar</h3>
-          <p>Preguntes sobre plats, aliments i cuina de tot el món</p>
-          <span class="info-tema">15 s per pregunta</span>
-          <button class="boto boto-principal" data-tema="menjar">Jugar</button>
+          <div class="tema-cos">
+            <h3>Menjar</h3>
+            <p>Preguntes sobre plats, aliments i cuina de tot el món</p>
+            <span class="info-tema">15 s per pregunta</span>
+            <button class="boto boto-principal" data-tema="menjar">Jugar</button>
+          </div>
         </article>
       </div>
 
@@ -61,17 +100,21 @@
     <!-- ===== Pantalla 3: Pregunta ===== -->
     <section id="pantalla-pregunta" class="pantalla">
       <div class="joc">
-        <div class="capcalera-joc">
-          <div class="barra-info">
-            <span id="etiqueta-tema" class="etiqueta">Esports</span>
+        <div class="barra-info">
+          <span id="etiqueta-tema" class="etiqueta">Esports</span>
+
+          <div class="progres">
             <span id="comptador">Pregunta 1 de 3</span>
-            <span class="temps">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg>
-              <span id="temps">15</span> s
-            </span>
+            <div id="progres-punts" class="progres-punts"></div>
           </div>
-          <div class="barra-temps">
-            <div id="barra-temps-restant" class="barra-temps-restant"></div>
+
+          <!-- Temporitzador circular: l'arc es va buidant -->
+          <div id="rellotge" class="rellotge">
+            <svg viewBox="0 0 44 44">
+              <circle class="rellotge-fons" cx="22" cy="22" r="19"/>
+              <circle id="rellotge-arc" class="rellotge-arc" cx="22" cy="22" r="19"/>
+            </svg>
+            <span id="temps">15</span>
           </div>
         </div>
 
@@ -79,7 +122,7 @@
           <h2 id="text-pregunta">Aquí anirà el text de la pregunta</h2>
         </div>
 
-        <!-- Les opcions les crearà el JavaScript. Aquestes són d'exemple per veure el disseny. -->
+        <!-- Les opcions les crea el JavaScript. Aquestes són d'exemple per veure el disseny. -->
         <div id="opcions" class="opcions">
           <button class="opcio"><span class="lletra">A</span>Opció 1</button>
           <button class="opcio"><span class="lletra">B</span>Opció 2</button>
@@ -87,7 +130,10 @@
           <button class="opcio"><span class="lletra">D</span>Opció 4</button>
         </div>
 
-        <p class="punts">Punts: <span id="punts">0</span></p>
+        <div class="peu-joc">
+          <p class="punts">Punts: <span id="punts">0</span></p>
+          <p class="pista">També pots respondre amb les tecles A, B, C i D</p>
+        </div>
       </div>
     </section>
 
@@ -114,6 +160,8 @@
     </section>
 
   </main>
+
+  <footer class="peu">Fet per Biel Pérez i Anthony Milla · DAM 2026</footer>
 
   <script src="js/preguntes.js"></script>
   <script src="js/script.js"></script>

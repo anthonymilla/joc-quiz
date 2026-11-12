@@ -8,10 +8,12 @@ El mockup està fet amb Figma: [Joc Quiz - Mockup](https://www.figma.com/design/
 
 | Pantalla | Què hi ha |
 |---|---|
-| 1. Inici | Logo, títol del joc, camp per escriure el nom i botó **Començar** |
-| 2. Tria de tema | "Hola, [nom]!" i dues targetes per triar **Esports** o **Menjar** |
-| 3. Pregunta | Tema, número de pregunta, temps que queda, la pregunta i 4 respostes (A, B, C, D) |
-| 4. Resultats | Puntuació (per exemple 2/3), resum de cada pregunta i botons **Tornar a jugar** i **Sortir** |
+| 1. Inici | Portada en dues columnes: a l'esquerra el títol "Joc Quiz", una frase i tres característiques (Tria el tema, Contra rellotge, Mira els resultats); a la dreta una targeta per escriure el nom i el botó **Començar** |
+| 2. Tria de tema | "Hola, [nom]!" i dues targetes amb una capçalera de color i icona per triar **Esports** o **Menjar** |
+| 3. Pregunta | Tema, número de pregunta amb una ratlleta per pregunta, temporitzador circular, la pregunta i 4 respostes (A, B, C, D) |
+| 4. Resultats | Anell amb el percentatge d'encerts i la puntuació (per exemple 4/5), resum de cada pregunta i botons **Tornar a jugar** i **Sortir** |
+
+A totes les pantalles hi ha un peu de pàgina: "Fet per Biel Pérez i Anthony Milla · DAM 2026".
 
 ## Tipografia
 
@@ -51,18 +53,38 @@ Al CSS, els colors estan guardats com a variables a `:root` (fitxer `css/style.c
 | Vermell | `#DC2626` | `--vermell` | Errors i respostes incorrectes |
 | Taronja | `#EA580C` | `--taronja` | Tema Menjar |
 
-El fons de totes les pantalles és un **degradat horitzontal** de lila fosc (`#4338CA`) a lila (`#7C3AED`), amb uns interrogants grans i transparents de decoració.
+El fons és un **degradat** amb unes taques de color difuminades que es mouen a poc a poc i uns interrogants grans i transparents de decoració.
+
+### Colors segons el tema
+
+Quan es tria un tema, el fons i els detalls (etiqueta, lletres de les respostes, anell de resultats) canvien de color, i en tornar a la tria de tema es torna al lila:
+
+| Tema | Degradat del fons | Color dels detalls |
+|---|---|---|
+| Inici i tria de tema | `#4338CA` → `#7C3AED` (lila) | `#4338CA` |
+| Esports | `#065F46` → `#10B981` (verd) | `#059669` |
+| Menjar | `#9A3412` → `#F59E0B` (taronja) | `#EA580C` |
+
+Al CSS es fa amb les variables `--fons-1`, `--fons-2`, `--tema` i `--tema-clar`, que canvien amb les classes `tema-esports` i `tema-menjar` del `body`.
 
 ## Components
 
-- **Botó principal:** groc, text fosc, cantonades de 12 px. Per a l'acció important de cada pantalla (Començar, Jugar, Tornar a jugar).
+- **Botó principal:** groc amb un degradat suau, text fosc i cantonades de 14 px. Per a l'acció important de cada pantalla (Començar, Jugar, Tornar a jugar).
 - **Botó secundari:** blanc amb vora lila de 2 px. Per a les accions secundàries (Sortir).
 - **Opció de resposta:** fons blanc, vora lila clar, cantonades de 16 px. Porta la lletra (A, B, C, D) dins d'un cercle.
-- **Targeta:** fons blanc, cantonades de 24 px i una ombra suau. Conté el contingut de cada pantalla.
+- **Targeta:** fons blanc, cantonades de 28 px i una ombra suau. Conté el contingut de cada pantalla.
+- **Temporitzador circular:** un cercle que es va buidant. És verd amb més de 9 segons, groc entre 9 i 6, i vermell els últims 5, quan també fa un petit batec.
+
+## Animacions
+
+- Les pantalles apareixen amb un fos i un petit desplaçament cap amunt.
+- Els botons i les targetes dels temes s'aixequen en passar-hi el ratolí.
+- Les respostes apareixen una darrere l'altra.
+- Les respostes també es poden triar amb les tecles A, B, C i D.
 
 ## Formes i espais
 
-- **Cantonades:** 12 px (botons i camps), 16 px (respostes), 24 px (targetes) i rodones del tot per a les etiquetes.
+- **Cantonades:** 14 px (botons i camps), 18 px (respostes), 28 px (targetes) i rodones del tot per a les etiquetes.
 - **Espais:** fem servir múltiples de 8 (8, 16, 24, 32 i 48 px).
 
 ## Icones
