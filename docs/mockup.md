@@ -9,8 +9,8 @@ El mockup està fet amb Figma: [Joc Quiz - Mockup](https://www.figma.com/design/
 | Pantalla | Què hi ha |
 |---|---|
 | 1. Inici | Portada en dues columnes: a l'esquerra el títol "Joc Quiz", una frase i tres característiques (Tria el tema, Contra rellotge, Mira els resultats); a la dreta una targeta per escriure el nom i el botó **Començar** |
-| 2. Tria de tema | "Hola, [nom]!" i dues targetes amb una capçalera de color i icona per triar **Esports** o **Menjar** |
-| 3. Pregunta | Tema, número de pregunta amb una ratlleta per pregunta, temporitzador circular, la pregunta i 4 respostes (A, B, C, D) |
+| 2. Tria de tema | "Hola, [nom]!" i quatre targetes amb una capçalera de color i icona per triar **Esports**, **Menjar**, **Geografia** o **Videojocs** |
+| 3. Pregunta | Tema, número de pregunta amb una ratlleta per pregunta, temporitzador circular, la pregunta, 4 respostes (A, B, C, D) i el botó **Sortir als temes** |
 | 4. Resultats | Anell amb el percentatge d'encerts i la puntuació (per exemple 4/5), resum de cada pregunta i botons **Tornar a jugar** i **Sortir** |
 
 A totes les pantalles hi ha un peu de pàgina: "Fet per Biel Pérez i Anthony Milla · DAM 2026".
@@ -64,8 +64,10 @@ Quan es tria un tema, el fons i els detalls (etiqueta, lletres de les respostes,
 | Inici i tria de tema | `#4338CA` → `#7C3AED` (lila) | `#4338CA` |
 | Esports | `#065F46` → `#10B981` (verd) | `#059669` |
 | Menjar | `#9A3412` → `#F59E0B` (taronja) | `#EA580C` |
+| Geografia | `#1E3A8A` → `#0EA5E9` (blau) | `#0284C7` |
+| Videojocs | `#831843` → `#EC4899` (rosa) | `#DB2777` |
 
-Al CSS es fa amb les variables `--fons-1`, `--fons-2`, `--tema` i `--tema-clar`, que canvien amb les classes `tema-esports` i `tema-menjar` del `body`.
+Al CSS es fa amb les variables `--fons-1`, `--fons-2`, `--tema` i `--tema-clar`, que canvien amb les classes `tema-esports`, `tema-menjar`, `tema-geografia` i `tema-videojocs` del `body`.
 
 ## Components
 
@@ -100,6 +102,7 @@ Icones de [Lucide](https://lucide.dev) amb traç de 2 px: copa (Esports), cobert
 - **Resultats → Tria de tema:** amb Tornar a jugar.
 - **Resultats → Inici:** amb Sortir.
 - **Tria de tema → Inici:** amb Canviar de nom.
+- **Pregunta → Tria de tema:** amb Sortir als temes (abans demana confirmació, perquè es perd la partida).
 
 ## Mida
 
