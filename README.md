@@ -44,6 +44,18 @@ Format: `tipus: descripció`
 - `v1.1` – Seguiment 2
 - `v1.2` – Entrega final
 
+## Flux del joc
+```mermaid
+flowchart TD
+    A[Inici: escriure el nom] --> B[Tria de tema]
+    B --> C[Pregunta amb temps]
+    C -->|Respon o s'acaba el temps| D{Queden preguntes?}
+    D -->|Sí| C
+    D -->|No| E[Resultats]
+    E -->|Tornar a jugar| B
+    E -->|Sortir| A
+```
+
 ## Documentació
 - [Planificació](docs/planificacio.md)
 - [Actes de reunions](docs/actes.md)
