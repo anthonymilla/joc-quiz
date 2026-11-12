@@ -14,7 +14,57 @@
   --taronja-clar: #FFEDD5;
   --vermell: #DC2626;
   --vermell-clar: #FEE2E2;
-  --ombra: 0 12px 32px rgba(18, 13, 64, 0.25);
+  --ombra: 0 30px 60px -20px rgba(15, 10, 60, 0.45), 0 10px 24px -12px rgba(15, 10, 60, 0.25);
+}
+
+/* ===== Colors segons el tema =====
+   Per defecte el joc és lila. Quan es tria un tema, el JS posa la classe
+   "tema-esports" o "tema-menjar" al body i canvien el fons i els detalls. */
+@property --fons-1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #4338CA;
+}
+
+@property --fons-2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #7C3AED;
+}
+
+body {
+  --fons-1: #4338CA;
+  --fons-2: #7C3AED;
+  --tema: #4338CA;
+  --tema-clar: #EEF2FF;
+}
+
+body.tema-esports {
+  --fons-1: #065F46;
+  --fons-2: #10B981;
+  --tema: #059669;
+  --tema-clar: #D1FAE5;
+}
+
+body.tema-menjar {
+  --fons-1: #9A3412;
+  --fons-2: #F59E0B;
+  --tema: #EA580C;
+  --tema-clar: #FFEDD5;
+}
+
+body.tema-geografia {
+  --fons-1: #1E3A8A;
+  --fons-2: #0EA5E9;
+  --tema: #0284C7;
+  --tema-clar: #E0F2FE;
+}
+
+body.tema-videojocs {
+  --fons-1: #831843;
+  --fons-2: #EC4899;
+  --tema: #DB2777;
+  --tema-clar: #FCE7F3;
 }
 
 * {
@@ -27,20 +77,72 @@ body {
   font-family: 'Poppins', sans-serif;
   color: var(--text);
   min-height: 100vh;
-  background: linear-gradient(90deg, var(--lila-fosc), var(--lila));
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(120deg, var(--fons-1), var(--fons-2));
+  transition: --fons-1 0.8s ease, --fons-2 0.8s ease;
   overflow-x: hidden;
 }
 
-/* Interrogants grans del fons (només decoració) */
+/* ===== Fons: taques de color i interrogants ===== */
+.fons {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.taca {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+  animation: flotar 18s ease-in-out infinite alternate;
+}
+
+.taca-1 {
+  width: 520px;
+  height: 520px;
+  top: -160px;
+  left: -120px;
+  background: #ffffff;
+  opacity: 0.18;
+}
+
+.taca-2 {
+  width: 440px;
+  height: 440px;
+  bottom: -160px;
+  right: -80px;
+  background: var(--groc);
+  opacity: 0.25;
+  animation-duration: 22s;
+}
+
+.taca-3 {
+  width: 320px;
+  height: 320px;
+  top: 40%;
+  left: 45%;
+  background: var(--fons-1);
+  opacity: 0.5;
+  animation-duration: 26s;
+}
+
+@keyframes flotar {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(60px, 40px) scale(1.15); }
+}
+
 body::before,
 body::after {
   content: "?";
   position: fixed;
   font-size: 360px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1;
   color: white;
-  opacity: 0.07;
+  opacity: 0.06;
   pointer-events: none;
 }
 
@@ -57,11 +159,20 @@ body::after {
 }
 
 /* ===== Pantalles ===== */
+/* El main ocupa tota l'alçada que queda i el peu de pàgina va a sota */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
 /* Només es veu la pantalla que té la classe "activa" */
 .pantalla {
   display: none;
-  min-height: 100vh;
-  padding: 40px 16px;
+  flex: 1;
+  padding: 48px 16px 32px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -71,12 +182,18 @@ body::after {
 
 .pantalla.activa {
   display: flex;
+  animation: entrar 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes entrar {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
 }
 
 /* ===== Elements que es repeteixen ===== */
 .targeta {
   background: white;
-  border-radius: 24px;
+  border-radius: 28px;
   box-shadow: var(--ombra);
 }
 
@@ -84,72 +201,139 @@ body::after {
   width: 100%;
   padding: 16px 32px;
   border: 2px solid transparent;
-  border-radius: 12px;
+  border-radius: 14px;
   font-family: inherit;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.1s, filter 0.2s;
+  transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
 }
 
 .boto:hover {
-  filter: brightness(0.95);
+  transform: translateY(-2px);
 }
 
 .boto:active {
-  transform: scale(0.98);
+  transform: translateY(0) scale(0.98);
 }
 
 .boto-principal {
-  background: var(--groc);
+  background: linear-gradient(180deg, #FCD34D, var(--groc));
   color: var(--text);
+  box-shadow: 0 10px 20px -8px rgba(217, 119, 6, 0.6);
+}
+
+.boto-principal:hover {
+  box-shadow: 0 14px 26px -8px rgba(217, 119, 6, 0.7);
 }
 
 .boto-secundari {
   background: white;
-  color: var(--lila-fosc);
-  border-color: var(--lila-fosc);
+  color: var(--tema);
+  border-color: var(--tema);
+}
+
+.xip {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  backdrop-filter: blur(6px);
 }
 
 /* ===== 1. Inici ===== */
-.targeta-inici {
+.inici {
   width: 100%;
-  max-width: 480px;
-  padding: 48px;
-  text-align: center;
+  max-width: 1080px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: center;
 }
 
-.logo {
-  width: 84px;
-  height: 84px;
-  margin: 0 auto 12px;
-  border-radius: 50%;
-  background: var(--groc);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 46px;
-  font-weight: 700;
+.inici-text {
+  color: white;
 }
 
 .titol-joc {
-  font-size: 44px;
-  color: var(--lila-fosc);
+  margin-top: 20px;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.titol-joc span {
+  color: var(--groc);
 }
 
 .subtitol {
-  margin-top: 12px;
-  font-size: 17px;
-  line-height: 1.4;
+  margin-top: 20px;
+  max-width: 460px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.caracteristiques {
+  margin-top: 32px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.caracteristiques li {
+  padding: 8px 16px 8px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icona-petita {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: white;
+  color: var(--lila-fosc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icona-petita svg {
+  width: 16px;
+  height: 16px;
+}
+
+.targeta-inici {
+  padding: 44px;
+}
+
+.targeta-inici h2 {
+  font-size: 32px;
+  letter-spacing: -0.02em;
+}
+
+.text-suau {
+  margin-top: 6px;
   color: var(--gris);
 }
 
 .camp {
-  margin-top: 32px;
+  margin-top: 28px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  text-align: left;
 }
 
 .camp label {
@@ -157,21 +341,23 @@ body::after {
 }
 
 .camp input {
-  padding: 14px 16px;
+  padding: 15px 16px;
   border: 2px solid var(--vora);
-  border-radius: 12px;
+  border-radius: 14px;
   background: var(--gris-clar);
   font-family: inherit;
   font-size: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .camp input:focus {
   outline: none;
   border-color: var(--lila-fosc);
+  box-shadow: 0 0 0 4px rgba(67, 56, 202, 0.15);
 }
 
 .camp .boto {
-  margin-top: 24px;
+  margin-top: 20px;
 }
 
 .error {
@@ -185,7 +371,9 @@ body::after {
 
 /* ===== 2. Tria de tema ===== */
 .salutacio {
-  font-size: 52px;
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   color: white;
   text-align: center;
 }
@@ -202,61 +390,82 @@ body::after {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 32px;
+  gap: 24px;
 }
 
 .tema {
-  width: 340px;
-  padding: 40px;
+  width: 260px;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.tema:hover {
+  transform: translateY(-8px) rotate(-0.5deg);
+  box-shadow: 0 40px 70px -24px rgba(15, 10, 60, 0.55);
+}
+
+.tema-capcalera {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.tema-capcalera svg {
+  width: 64px;
+  height: 64px;
+  transition: transform 0.3s;
+}
+
+.tema:hover .tema-capcalera svg {
+  transform: scale(1.12) rotate(-6deg);
+}
+
+.tema-esports .tema-capcalera {
+  background: linear-gradient(135deg, #10B981, #047857);
+}
+
+.tema-menjar .tema-capcalera {
+  background: linear-gradient(135deg, #F59E0B, #EA580C);
+}
+
+.tema-geografia .tema-capcalera {
+  background: linear-gradient(135deg, #38BDF8, #1D4ED8);
+}
+
+.tema-videojocs .tema-capcalera {
+  background: linear-gradient(135deg, #F472B6, #BE185D);
+}
+
+.tema-cos {
+  padding: 24px 24px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   text-align: center;
 }
 
 .tema h3 {
-  font-size: 30px;
+  font-size: 26px;
 }
 
 .tema p {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.4;
   color: var(--gris);
 }
 
-.icona-tema {
-  width: 104px;
-  height: 104px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icona-tema svg {
-  width: 52px;
-  height: 52px;
-}
-
-.icona-esports {
-  background: var(--verd-clar);
-  color: var(--verd);
-}
-
-.icona-menjar {
-  background: var(--taronja-clar);
-  color: var(--taronja);
-}
-
 .info-tema {
+  margin-bottom: 6px;
   font-size: 14px;
   font-weight: 500;
   color: var(--lila-fosc);
 }
 
 .enllac {
-  margin-top: 44px;
+  margin-top: 40px;
   background: none;
   border: none;
   font-family: inherit;
@@ -276,70 +485,127 @@ body::after {
   gap: 28px;
 }
 
-.capcalera-joc {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
 .barra-info {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  font-size: 20px;
-  font-weight: 600;
   color: white;
 }
 
 .etiqueta {
-  padding: 8px 18px;
-  border-radius: 999px;
-  background: var(--verd);
-  font-size: 16px;
-}
-
-.temps {
+  justify-self: start;
   padding: 8px 18px;
   border-radius: 999px;
   background: white;
-  color: var(--text);
+  color: var(--tema);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.progres {
+  text-align: center;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
+}
+
+/* Una ratlleta per cada pregunta: blanca la que toca, verda o vermella les fetes */
+.progres-punts {
+  margin-top: 8px;
   display: flex;
-  align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 6px;
 }
 
-.temps svg {
-  width: 20px;
-  height: 20px;
-  color: #D97706;
+.punt {
+  width: 28px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  transition: background 0.3s;
 }
 
-.barra-temps {
-  height: 10px;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.25);
-  overflow: hidden;
+.punt.actual {
+  background: white;
 }
 
-/* L'amplada d'aquesta barra la canviarà el temporitzador (de 100% a 0%) */
-.barra-temps-restant {
+.punt.encert {
+  background: #4ADE80;
+}
+
+.punt.error {
+  background: #F87171;
+}
+
+/* Temporitzador circular */
+.rellotge {
+  justify-self: end;
+  position: relative;
+  width: 68px;
+  height: 68px;
+  color: #22C55E;
+  transition: color 0.3s;
+}
+
+.rellotge svg {
   width: 100%;
   height: 100%;
-  border-radius: 5px;
-  background: var(--groc);
-  transition: width 1s linear;
+  transform: rotate(-90deg);
+}
+
+.rellotge circle {
+  fill: none;
+  stroke-width: 4;
+}
+
+.rellotge-fons {
+  stroke: rgba(255, 255, 255, 0.25);
+}
+
+.rellotge-arc {
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-dasharray: 119.38; /* 2 · π · 19 */
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+}
+
+#temps {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+
+.rellotge.groc {
+  color: var(--groc);
+}
+
+.rellotge.vermell {
+  color: #EF4444;
+}
+
+.rellotge.batec {
+  animation: batec 1s ease-in-out infinite;
+}
+
+@keyframes batec {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
 }
 
 .targeta-pregunta {
-  padding: 48px;
+  padding: 52px 48px;
   text-align: center;
 }
 
 .targeta-pregunta h2 {
   font-size: 36px;
   line-height: 1.3;
+  letter-spacing: -0.02em;
 }
 
 .opcions {
@@ -350,9 +616,10 @@ body::after {
 
 .opcio {
   padding: 18px 24px;
-  border: 2px solid #E0E7FF;
-  border-radius: 16px;
+  border: 2px solid transparent;
+  border-radius: 18px;
   background: white;
+  box-shadow: 0 10px 24px -14px rgba(15, 10, 60, 0.45);
   font-family: inherit;
   font-size: 20px;
   font-weight: 500;
@@ -362,38 +629,86 @@ body::after {
   display: flex;
   align-items: center;
   gap: 16px;
+  animation: entrar 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transition: transform 0.15s, border-color 0.2s;
 }
 
+.opcio:nth-child(2) { animation-delay: 0.05s; }
+.opcio:nth-child(3) { animation-delay: 0.1s; }
+.opcio:nth-child(4) { animation-delay: 0.15s; }
+
 .opcio:hover {
-  border-color: var(--lila-fosc);
+  border-color: var(--tema);
+  transform: translateY(-2px);
 }
 
 .lletra {
   width: 44px;
   height: 44px;
   flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--lila-clar);
-  color: var(--lila-fosc);
+  border-radius: 12px;
+  background: var(--tema-clar);
+  color: var(--tema);
   font-size: 18px;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.opcio:hover .lletra {
+  background: var(--tema);
+  color: white;
+}
+
+.peu-joc {
+  text-align: center;
+  color: white;
 }
 
 .punts {
   font-size: 18px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  text-align: center;
+}
+
+.pista {
+  margin-top: 4px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.boto-sortir-joc {
+  margin-top: 18px;
+  padding: 8px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.boto-sortir-joc:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.boto-sortir-joc svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* ===== 4. Resultats ===== */
 .targeta-resultats {
   width: 100%;
-  max-width: 560px;
-  padding: 44px;
+  max-width: 580px;
+  padding: 36px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -402,6 +717,7 @@ body::after {
 
 .targeta-resultats h2 {
   font-size: 36px;
+  letter-spacing: -0.02em;
 }
 
 .tema-resultats {
@@ -409,15 +725,26 @@ body::after {
   color: var(--gris);
 }
 
+/* Anell de la puntuació: es pinta el tant per cent d'encerts (--percentatge el posa el JS) */
 .cercle-puntuacio {
-  width: 168px;
-  height: 168px;
-  margin-top: 24px;
+  width: 150px;
+  height: 150px;
+  margin-top: 20px;
   border-radius: 50%;
-  background: linear-gradient(90deg, var(--lila-fosc), var(--lila));
-  color: white;
-  font-size: 54px;
-  font-weight: 700;
+  background: conic-gradient(var(--tema) calc(var(--percentatge, 0) * 1%), var(--tema-clar) 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#puntuacio {
+  width: 122px;
+  height: 122px;
+  border-radius: 50%;
+  background: white;
+  color: var(--tema);
+  font-size: 42px;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -432,17 +759,17 @@ body::after {
 
 .resum {
   width: 100%;
-  margin-top: 24px;
+  margin-top: 20px;
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .resum li {
-  padding: 12px 16px;
+  padding: 10px 14px;
   border-radius: 12px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   text-align: left;
   display: flex;
@@ -495,4 +822,37 @@ body::after {
   margin-top: 24px;
   display: flex;
   gap: 16px;
+}
+
+/* ===== Peu de pàgina ===== */
+.peu {
+  position: relative;
+  z-index: 2;
+  padding: 0 16px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Pantalles estretes: la portada passa a una sola columna
+   (la resta del responsive es fa al seguiment 2) */
+@media (max-width: 900px) {
+  .inici {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .subtitol {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .caracteristiques {
+    justify-content: center;
+  }
+
+  .titol-joc {
+    font-size: 64px;
+  }
 }
