@@ -53,6 +53,20 @@ body.tema-menjar {
   --tema-clar: #FFEDD5;
 }
 
+body.tema-geografia {
+  --fons-1: #1E3A8A;
+  --fons-2: #0EA5E9;
+  --tema: #0284C7;
+  --tema-clar: #E0F2FE;
+}
+
+body.tema-videojocs {
+  --fons-1: #831843;
+  --fons-2: #EC4899;
+  --tema: #DB2777;
+  --tema-clar: #FCE7F3;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -376,11 +390,11 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 32px;
+  gap: 24px;
 }
 
 .tema {
-  width: 340px;
+  width: 260px;
   overflow: hidden;
   transition: transform 0.25s, box-shadow 0.25s;
 }
@@ -391,7 +405,7 @@ main {
 }
 
 .tema-capcalera {
-  height: 150px;
+  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -399,8 +413,8 @@ main {
 }
 
 .tema-capcalera svg {
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   transition: transform 0.3s;
 }
 
@@ -416,8 +430,16 @@ main {
   background: linear-gradient(135deg, #F59E0B, #EA580C);
 }
 
+.tema-geografia .tema-capcalera {
+  background: linear-gradient(135deg, #38BDF8, #1D4ED8);
+}
+
+.tema-videojocs .tema-capcalera {
+  background: linear-gradient(135deg, #F472B6, #BE185D);
+}
+
 .tema-cos {
-  padding: 28px 32px 32px;
+  padding: 24px 24px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -426,11 +448,11 @@ main {
 }
 
 .tema h3 {
-  font-size: 30px;
+  font-size: 26px;
 }
 
 .tema p {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.4;
   color: var(--gris);
 }
@@ -654,6 +676,32 @@ main {
   margin-top: 4px;
   font-size: 13px;
   opacity: 0.7;
+}
+
+.boto-sortir-joc {
+  margin-top: 18px;
+  padding: 8px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.boto-sortir-joc:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.boto-sortir-joc svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* ===== 4. Resultats ===== */

@@ -1,6 +1,6 @@
 // ===== Variables del joc =====
 let nomJugador = "";
-let temaActual = "";      // "esports" o "menjar"
+let temaActual = "";      // "esports", "menjar", "geografia" o "videojocs"
 let llistaPreguntes = []; // preguntes del tema triat
 let preguntaActual = 0;   // posició de la pregunta que es mostra
 let punts = 0;
@@ -8,6 +8,14 @@ let respostes = [];       // per a cada pregunta, si s'ha encertat o no (per al 
 let temporitzador = null; // aquí guardarem el setInterval del compte enrere
 
 const TEMPS_PER_PREGUNTA = 15; // segons
+
+// Noms dels temes tal com es veuen a la pantalla
+const nomsTemes = {
+  esports: "Esports",
+  menjar: "Menjar",
+  geografia: "Geografia",
+  videojocs: "Videojocs"
+};
 
 
 // ===== Canviar de pantalla =====
@@ -24,8 +32,15 @@ function mostrarPantalla(id) {
 
   // Fora de la partida, el joc torna als colors de sempre (lila)
   if (id === "pantalla-inici" || id === "pantalla-tema") {
-    document.body.classList.remove("tema-esports", "tema-menjar");
+    treureColorsTema();
   }
+}
+
+// Treu les classes de color de tots els temes (tema-esports, tema-menjar...)
+function treureColorsTema() {
+  Object.keys(nomsTemes).forEach(function (tema) {
+    document.body.classList.remove("tema-" + tema);
+  });
 }
 
 
@@ -82,11 +97,11 @@ function comencarJoc() {
   punts = 0;
   respostes = [];
 
-  // colors del tema triat (verd per a esports, taronja per a menjar)
-  document.body.classList.remove("tema-esports", "tema-menjar");
+  // colors del tema triat (cada tema té el seu color)
+  treureColorsTema();
   document.body.classList.add("tema-" + temaActual);
 
-  etiquetaTema.textContent = temaActual === "esports" ? "Esports" : "Menjar";
+  etiquetaTema.textContent = nomsTemes[temaActual];
   mostrarPantalla("pantalla-pregunta");
   mostrarPregunta();
 }
@@ -168,6 +183,14 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+// Sortir de la partida i tornar a la tria de tema
+document.getElementById("boto-sortir-joc").addEventListener("click", function () {
+  if (confirm("Segur que vols sortir? Es perdrà la partida.")) {
+    aturarTemporitzador();
+    mostrarPantalla("pantalla-tema");
+  }
+});
+
 
 // ===== Temporitzador (Biel) =====
 const textTemps = document.getElementById("temps");
@@ -223,7 +246,7 @@ function actualitzarTemps() {
 // ===== 4. Resultats i tornar a jugar (Anthony) =====
 function mostrarResultats() {
   document.getElementById("nom-resultats").textContent = nomJugador;
-  document.getElementById("tema-resultats").textContent = temaActual === "esports" ? "Esports" : "Menjar";
+  document.getElementById("tema-resultats").textContent = nomsTemes[temaActual];
   document.getElementById("puntuacio").textContent = punts + "/" + llistaPreguntes.length;
 
   const resum = document.getElementById("resum");
