@@ -856,3 +856,36 @@ main {
     font-size: 64px;
   }
 }
+
+/* ===== Avís d'encert o error (Anthony) ===== */
+.opcio.encertada {
+  background: var(--verd-clar);
+  border-color: var(--verd);
+}
+
+.opcio.encertada .lletra {
+  background: var(--verd);
+  color: white;
+}
+
+.opcio.fallada {
+  background: var(--vermell-clar);
+  border-color: var(--vermell);
+  animation: sacsejar 0.4s;
+}
+
+.opcio.fallada .lletra {
+  background: var(--vermell);
+  color: white;
+}
+
+/* mentre es veu l'avís no es pot clicar cap altra opció */
+.opcions.bloquejades .opcio {
+  pointer-events: none;
+}
+
+@keyframes sacsejar {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
