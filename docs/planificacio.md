@@ -37,6 +37,13 @@
 | Dc 2/12 | Proves finals i correcció d'errors | Proves finals i correcció d'errors |
 | Dj 3/12 | Acta de l'última reunió | Merge a main i tag v1.2 |
 
+### Canvis demanats pel professor (26/11)
+| Tasca | Qui | Data |
+|---|---|---|
+| 5 preguntes a l'atzar a cada partida | Biel | Dv 27/11 |
+| Ampliar fins a unes 40 preguntes: Esports i Geografia | Biel | Dl 30/11 |
+| Ampliar fins a unes 40 preguntes: Menjar i Videojocs | Anthony | Dl 30/11 |
+
 ## Com treballem
 1. Cadascú treballa a la seva branca (`biel` / `anthony`).
 2. Quan acabem una tasca fem una pull request cap a `test` i l'altre la revisa.
