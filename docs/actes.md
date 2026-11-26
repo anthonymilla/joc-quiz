@@ -15,13 +15,24 @@
 
 **Pròxima reunió:** 12/11/2026 (Seguiment 1)
 
-## Reunió 2 - 26/11/2026 (Seguiment 2, amb el professor)
+## Reunió 2 - 12/11/2026 (Seguiment 1)
+**Assistents:** Biel Pérez, Anthony Milla
+
+**Temes tractats:**
+- Presentació de la versió v1.0
+- Comentaris del professor
+
+**Acords:**
+- Revisar el tag v1.0 perquè apunti a la versió correcta
+- Millorar el disseny visual, afegir més temes i l'avís d'encert o error
+
+## Reunió 3 - 26/11/2026 (Seguiment 2, amb el professor)
 **Assistents:** Biel Pérez, Anthony Milla i el professor
 
 **Temes tractats:**
-- Revisió del joc: nou disseny, colors per tema, temporitzador circular i temes nous (Geografia i Videojocs)
+- Revisió del joc: nou disseny, colors per tema, temporitzador circular, temes nous (Geografia i Videojocs) i avís d'encert
 - Estat del Project i de les branques a GitHub
-- Planificació fins a l'entrega final
+- Planificació de l'entrega final
 
 **Comentaris del professor:**
 - En general la valoració és molt bona.
@@ -31,7 +42,8 @@
 **Acords:**
 - Ampliar les preguntes de cada tema fins a unes 40
 - Fer que cada partida agafi 5 preguntes a l'atzar
-- Acabar l'avís d'encert o error, el responsive i les proves, i posar el tag v1.1
+- Acabar el disseny responsive i fer les proves finals per a la versió definitiva
+- Mantenir el Project i les actes al dia a GitHub
 - Actualitzar el mockup de Figma amb el disseny nou
 
 **Pròxima reunió:** 03/12/2026 (Entrega final)
