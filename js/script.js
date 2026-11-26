@@ -150,26 +150,33 @@ function mostrarPregunta() {
 
 // index = posició de l'opció triada (-1 si s'ha acabat el temps)
 function respondre(index) {
+  if (esperantAvis) {
+    return; // encara s'està veient l'avís de la pregunta anterior
+  }
   aturarTemporitzador();
 
   const pregunta = llistaPreguntes[preguntaActual];
   const encertada = index === pregunta.correcta;
   if (encertada) {
     punts++;
+    textPunts.textContent = punts;
   }
 
   // per al resum de la pantalla de resultats
   respostes.push({ pregunta: pregunta.pregunta, encertada: encertada });
 
-  preguntaActual++;
-  if (preguntaActual < llistaPreguntes.length) {
-    mostrarPregunta();
-  } else {
-    // per a l'anell de la pantalla de resultats
-    const percentatge = Math.round((punts / llistaPreguntes.length) * 100);
-    document.body.style.setProperty("--percentatge", percentatge);
-    mostrarResultats(); // la fa l'Anthony
-  }
+  // primer es veu l'avís d'encert o error i després es passa a la següent
+  mostrarAvis(index, pregunta.correcta, function () {
+    preguntaActual++;
+    if (preguntaActual < llistaPreguntes.length) {
+      mostrarPregunta();
+    } else {
+      // per a l'anell de la pantalla de resultats
+      const percentatge = Math.round((punts / llistaPreguntes.length) * 100);
+      document.body.style.setProperty("--percentatge", percentatge);
+      mostrarResultats(); // la fa l'Anthony
+    }
+  });
 }
 
 // També es pot respondre amb el teclat: A, B, C o D
@@ -242,6 +249,33 @@ function actualitzarTemps() {
   }
 }
 
+// ===== Avís d'encert o error (Anthony) =====
+const TEMPS_AVIS = 1200; // mil·lisegons que es veu l'avís
+let esperantAvis = false; // mentre es veu l'avís no es pot tornar a respondre
+
+// Pinta de verd la resposta bona i de vermell la triada si és incorrecta.
+// Quan passa el temps de l'avís, crida la funció "seguent".
+function mostrarAvis(triada, correcta, seguent) {
+  esperantAvis = true;
+  contenidorOpcions.classList.add("bloquejades");
+
+  const botons = contenidorOpcions.querySelectorAll(".opcio");
+  botons[correcta].classList.add("encertada");
+  if (triada !== -1 && triada !== correcta) {
+    botons[triada].classList.add("fallada");
+  }
+
+  setTimeout(function () {
+    esperantAvis = false;
+    contenidorOpcions.classList.remove("bloquejades");
+
+    // si mentrestant s'ha sortit de la partida, no es fa res més
+    if (!document.getElementById("pantalla-pregunta").classList.contains("activa")) {
+      return;
+    }
+    seguent();
+  }, TEMPS_AVIS);
+}
 
 // ===== 4. Resultats i tornar a jugar (Anthony) =====
 function mostrarResultats() {
