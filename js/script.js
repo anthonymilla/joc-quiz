@@ -110,7 +110,9 @@ function barrejar(llista) {
   return copia;
 }
 
-// La crida la tria de tema (Anthony) quan es clica Jugar
+// Prepara una partida nova del tema triat: tria les preguntes, posa
+// els punts a zero, aplica els colors del tema i mostra la primera pregunta.
+// La crida la tria de tema (Anthony) quan es clica Jugar.
 function comencarJoc() {
   // cada partida agafa 5 preguntes a l'atzar del tema triat
   llistaPreguntes = barrejar(preguntes[temaActual]).slice(0, PREGUNTES_PER_PARTIDA);
@@ -127,7 +129,9 @@ function comencarJoc() {
   mostrarPregunta();
 }
 
-// Posa a la pantalla la pregunta que toca i les seves opcions
+// Posa a la pantalla la pregunta que toca (preguntaActual): el comptador,
+// el text, les ratlletes de progrés i un botó per a cada opció.
+// Al final engega el temporitzador d'aquesta pregunta.
 function mostrarPregunta() {
   const pregunta = llistaPreguntes[preguntaActual];
 
@@ -169,6 +173,8 @@ function mostrarPregunta() {
   iniciarTemporitzador();
 }
 
+// Comprova la resposta, suma el punt si és correcta i la guarda per al resum.
+// Després de l'avís d'encert o error passa a la pregunta següent o als resultats.
 // index = posició de l'opció triada (-1 si s'ha acabat el temps)
 function respondre(index) {
   if (esperantAvis) {
@@ -200,7 +206,8 @@ function respondre(index) {
   });
 }
 
-// També es pot respondre amb el teclat: A, B, C o D
+// També es pot respondre amb el teclat: A, B, C o D.
+// Només funciona mentre es veu la pantalla de la pregunta.
 document.addEventListener("keydown", function (event) {
   if (!document.getElementById("pantalla-pregunta").classList.contains("activa")) {
     return;
@@ -211,7 +218,8 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-// Sortir de la partida i tornar a la tria de tema
+// Sortir de la partida i tornar a la tria de tema.
+// Primer es demana confirmació perquè es perd la partida que s'està jugant.
 document.getElementById("boto-sortir-joc").addEventListener("click", function () {
   if (confirm("Segur que vols sortir? Es perdrà la partida.")) {
     aturarTemporitzador();
@@ -227,6 +235,8 @@ const arcRellotge = document.getElementById("rellotge-arc");
 const LLARGADA_ARC = 2 * Math.PI * 19; // perímetre del cercle (radi 19)
 let tempsRestant = 0;
 
+// Comença el compte enrere de TEMPS_PER_PREGUNTA segons per a la pregunta actual.
+// Cada segon actualitza el cercle i, si arriba a 0, respon com a fallada (-1).
 function iniciarTemporitzador() {
   aturarTemporitzador();
   tempsRestant = TEMPS_PER_PREGUNTA;
@@ -247,10 +257,13 @@ function iniciarTemporitzador() {
   }, 1000);
 }
 
+// Para el compte enrere (en respondre, en sortir o en acabar la partida)
 function aturarTemporitzador() {
   clearInterval(temporitzador);
 }
 
+// Posa a la pantalla els segons que queden, buida l'arc del cercle
+// i en canvia el color segons el temps restant
 function actualitzarTemps() {
   textTemps.textContent = tempsRestant;
 
