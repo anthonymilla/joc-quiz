@@ -8,6 +8,7 @@ let respostes = [];       // per a cada pregunta, si s'ha encertat o no (per al 
 let temporitzador = null; // aquí guardarem el setInterval del compte enrere
 
 const TEMPS_PER_PREGUNTA = 15; // segons
+const PREGUNTES_PER_PARTIDA = 5; // quantes preguntes surten a cada partida
 
 // Noms dels temes tal com es veuen a la pantalla
 const nomsTemes = {
@@ -95,9 +96,24 @@ const textPunts = document.getElementById("punts");
 const progresPunts = document.getElementById("progres-punts");
 const lletres = ["A", "B", "C", "D"];
 
+// Retorna una còpia de la llista amb els elements barrejats a l'atzar
+// (algorisme de Fisher-Yates: es recorre la llista del final al principi
+// i cada element s'intercanvia amb un altre de les posicions anteriors)
+function barrejar(llista) {
+  const copia = llista.slice();
+  for (let i = copia.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = copia[i];
+    copia[i] = copia[j];
+    copia[j] = temp;
+  }
+  return copia;
+}
+
 // La crida la tria de tema (Anthony) quan es clica Jugar
 function comencarJoc() {
-  llistaPreguntes = preguntes[temaActual];
+  // cada partida agafa 5 preguntes a l'atzar del tema triat
+  llistaPreguntes = barrejar(preguntes[temaActual]).slice(0, PREGUNTES_PER_PARTIDA);
   preguntaActual = 0;
   punts = 0;
   respostes = [];
