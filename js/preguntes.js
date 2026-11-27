@@ -31,6 +31,181 @@ const preguntes = {
       pregunta: "Quants sets s'han de guanyar en un partit masculí de Grand Slam de tennis?",
       opcions: ["2", "3", "4", "5"],
       correcta: 1
+    },
+    {
+      pregunta: "Quants punts val una cistella normal (no triple) en bàsquet?",
+      opcions: ["2", "1", "3", "4"],
+      correcta: 0
+    },
+    {
+      pregunta: "En quin esport es fa servir un volant en lloc d'una pilota?",
+      opcions: ["Tennis", "Bàdminton", "Pàdel", "Esquaix"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quants jugadors té un equip de bàsquet a la pista?",
+      opcions: ["4", "6", "5", "7"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quants jugadors té un equip de voleibol a la pista?",
+      opcions: ["5", "7", "8", "6"],
+      correcta: 3
+    },
+    {
+      pregunta: "Quina distància té una marató?",
+      opcions: ["42,195 km", "21,097 km", "50 km", "30 km"],
+      correcta: 0
+    },
+    {
+      pregunta: "En quin esport destaca Rafa Nadal?",
+      opcions: ["Golf", "Tennis", "Pàdel", "Bàsquet"],
+      correcta: 1
+    },
+    {
+      pregunta: "De quin color és el mallot del líder del Tour de França?",
+      opcions: ["Verd", "Vermell", "Groc", "Rosa"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quantes voltes a la pista té una cursa de 400 metres?",
+      opcions: ["2", "4", "Mitja volta", "1"],
+      correcta: 3
+    },
+    {
+      pregunta: "Com es diu el torneig de tennis que es juga sobre gespa a Londres?",
+      opcions: ["Wimbledon", "Roland Garros", "US Open", "Open d'Austràlia"],
+      correcta: 0
+    },
+    {
+      pregunta: "En quin esport es pot fer un home run?",
+      opcions: ["Criquet", "Beisbol", "Rugbi", "Hoquei"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quants anells té el símbol dels Jocs Olímpics?",
+      opcions: ["4", "6", "5", "7"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quina selecció va guanyar el Mundial de futbol del 2010?",
+      opcions: ["Alemanya", "Brasil", "Itàlia", "Espanya"],
+      correcta: 3
+    },
+    {
+      pregunta: "Quant dura un partit de futbol sense pròrroga?",
+      opcions: ["90 minuts", "80 minuts", "100 minuts", "60 minuts"],
+      correcta: 0
+    },
+    {
+      pregunta: "En quin esport s'anota un touchdown?",
+      opcions: ["Rugbi", "Futbol americà", "Hoquei gel", "Handbol"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quants jugadors té un equip d'handbol a la pista (porter inclòs)?",
+      opcions: ["6", "8", "7", "5"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quin esportista té més medalles olímpiques de la història?",
+      opcions: ["Usain Bolt", "Carl Lewis", "Mark Spitz", "Michael Phelps"],
+      correcta: 3
+    },
+    {
+      pregunta: "En quin esport es fa servir un stick i un disc anomenat puck?",
+      opcions: ["Hoquei gel", "Curling", "Lacrosse", "Hoquei herba"],
+      correcta: 0
+    },
+    {
+      pregunta: "En quin esport es competeix dins d'un ring?",
+      opcions: ["Natació", "Boxa", "Esgrima", "Tir amb arc"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quants forats té un recorregut complet de golf?",
+      opcions: ["9", "12", "18", "24"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quin país va organitzar els Jocs Olímpics del 1992?",
+      opcions: ["França", "Itàlia", "Estats Units", "Espanya"],
+      correcta: 3
+    },
+    {
+      pregunta: "Quin jugador de futbol pot tocar la pilota amb les mans dins de l'àrea?",
+      opcions: ["Porter", "Defensa", "Migcampista", "Davanter"],
+      correcta: 0
+    },
+    {
+      pregunta: "En quin esport es fan servir els estils crol, braça i esquena?",
+      opcions: ["Atletisme", "Natació", "Ciclisme", "Rem"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quants sets s'han de guanyar per guanyar un partit de voleibol?",
+      opcions: ["2", "4", "3", "5"],
+      correcta: 2
+    },
+    {
+      pregunta: "En quin esport competeix Lewis Hamilton?",
+      opcions: ["MotoGP", "Ral·lis", "Ciclisme", "Fórmula 1"],
+      correcta: 3
+    },
+    {
+      pregunta: "A quina alçada està la cistella de bàsquet?",
+      opcions: ["3,05 metres", "2,80 metres", "3,50 metres", "2,50 metres"],
+      correcta: 0
+    },
+    {
+      pregunta: "Quin equip de futbol juga a l'estadi Camp Nou?",
+      opcions: ["Reial Madrid", "FC Barcelona", "RCD Espanyol", "Girona FC"],
+      correcta: 1
+    },
+    {
+      pregunta: "En quin d'aquests esports es competeix amb un cavall?",
+      opcions: ["Esgrima", "Rem", "Hípica", "Tir amb arc"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quin esport practica Leo Messi?",
+      opcions: ["Bàsquet", "Tennis", "Handbol", "Futbol"],
+      correcta: 3
+    },
+    {
+      pregunta: "Qui té el rècord del món dels 100 metres llisos?",
+      opcions: ["Usain Bolt", "Carl Lewis", "Justin Gatlin", "Yohan Blake"],
+      correcta: 0
+    },
+    {
+      pregunta: "Quin d'aquests és considerat un esport mental?",
+      opcions: ["Petanca", "Escacs", "Bitlles", "Dards"],
+      correcta: 1
+    },
+    {
+      pregunta: "Cada quants anys es juga el Mundial de futbol?",
+      opcions: ["2", "3", "4", "5"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quin esport es juga amb pala en una pista tancada amb parets de vidre i reixa?",
+      opcions: ["Tennis", "Bàdminton", "Esquaix", "Pàdel"],
+      correcta: 3
+    },
+    {
+      pregunta: "Quina ciutat va organitzar els Jocs Olímpics del 2024?",
+      opcions: ["París", "Londres", "Tòquio", "Los Angeles"],
+      correcta: 0
+    },
+    {
+      pregunta: "Com es diu el premi que guanya el millor jugador de futbol de l'any?",
+      opcions: ["Bota d'Or", "Pilota d'Or", "Copa d'Or", "Guant d'Or"],
+      correcta: 1
+    },
+    {
+      pregunta: "En quin esport es juga la Copa Davis?",
+      opcions: ["Golf", "Futbol", "Tennis", "Rugbi"],
+      correcta: 2
     }
   ],
 
@@ -261,6 +436,181 @@ const preguntes = {
     {
       pregunta: "Quina és la capital de Catalunya?",
       opcions: ["Girona", "Tarragona", "Barcelona", "Lleida"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quin és el país més gran del món per superfície?",
+      opcions: ["Rússia", "Canadà", "Xina", "Estats Units"],
+      correcta: 0
+    },
+    {
+      pregunta: "Quina és la capital d'Itàlia?",
+      opcions: ["Milà", "Roma", "Nàpols", "Venècia"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quin és el desert càlid més gran del món?",
+      opcions: ["Gobi", "Atacama", "Sàhara", "Kalahari"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quina és la capital de Portugal?",
+      opcions: ["Porto", "Braga", "Coïmbra", "Lisboa"],
+      correcta: 3
+    },
+    {
+      pregunta: "Quin és el continent amb més habitants?",
+      opcions: ["Àsia", "Àfrica", "Europa", "Amèrica"],
+      correcta: 0
+    },
+    {
+      pregunta: "Quina és la capital del Japó?",
+      opcions: ["Osaka", "Tòquio", "Kyoto", "Seül"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quin riu passa per Saragossa?",
+      opcions: ["Tajo", "Duero", "Ebre", "Guadalquivir"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quantes províncies té Catalunya?",
+      opcions: ["2", "3", "5", "4"],
+      correcta: 3
+    },
+    {
+      pregunta: "Quin és el país amb més habitants del món?",
+      opcions: ["Índia", "Xina", "Estats Units", "Indonèsia"],
+      correcta: 0
+    },
+    {
+      pregunta: "Quina és la capital d'Alemanya?",
+      opcions: ["Munic", "Berlín", "Hamburg", "Frankfurt"],
+      correcta: 1
+    },
+    {
+      pregunta: "En quin país hi ha la Torre Eiffel?",
+      opcions: ["Bèlgica", "Itàlia", "França", "Suïssa"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quina serralada separa Catalunya de França?",
+      opcions: ["Alps", "Andes", "Apenins", "Pirineus"],
+      correcta: 3
+    },
+    {
+      pregunta: "Quina és la capital del Regne Unit?",
+      opcions: ["Londres", "Manchester", "Edimburg", "Liverpool"],
+      correcta: 0
+    },
+    {
+      pregunta: "Quin és el país més gran de Sud-amèrica?",
+      opcions: ["Argentina", "Brasil", "Perú", "Colòmbia"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quin mar banya la costa de Catalunya?",
+      opcions: ["Mar del Nord", "Mar Cantàbric", "Mar Mediterrani", "Mar Negre"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quina és la capital d'Austràlia?",
+      opcions: ["Sydney", "Melbourne", "Perth", "Canberra"],
+      correcta: 3
+    },
+    {
+      pregunta: "Quin és el riu més llarg de la península Ibèrica?",
+      opcions: ["Tajo", "Ebre", "Duero", "Guadiana"],
+      correcta: 0
+    },
+    {
+      pregunta: "En quin continent hi ha Egipte?",
+      opcions: ["Àsia", "Àfrica", "Europa", "Oceania"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quina és la capital del Canadà?",
+      opcions: ["Toronto", "Vancouver", "Ottawa", "Mont-real"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quin és el llac més gran d'Àfrica?",
+      opcions: ["Txad", "Tanganyika", "Malawi", "Victòria"],
+      correcta: 3
+    },
+    {
+      pregunta: "Quina és la muntanya més alta de Catalunya?",
+      opcions: ["Pica d'Estats", "Aneto", "Puigmal", "Canigó"],
+      correcta: 0
+    },
+    {
+      pregunta: "Quina és la capital de Grècia?",
+      opcions: ["Tessalònica", "Atenes", "Esparta", "Heraklion"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quin país té forma de bota?",
+      opcions: ["Grècia", "Portugal", "Itàlia", "Croàcia"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quin oceà separa Europa d'Amèrica?",
+      opcions: ["Pacífic", "Índic", "Àrtic", "Atlàntic"],
+      correcta: 3
+    },
+    {
+      pregunta: "Quina és la capital de Mèxic?",
+      opcions: ["Ciutat de Mèxic", "Guadalajara", "Monterrey", "Cancún"],
+      correcta: 0
+    },
+    {
+      pregunta: "En quin país hi ha les piràmides de Gizeh?",
+      opcions: ["Mèxic", "Egipte", "Perú", "Sudan"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quina és la capital dels Estats Units?",
+      opcions: ["Nova York", "Los Angeles", "Washington DC", "Chicago"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quin és el país més petit del món?",
+      opcions: ["Mònaco", "San Marino", "Liechtenstein", "Ciutat del Vaticà"],
+      correcta: 3
+    },
+    {
+      pregunta: "Quina és la capital de la comarca del Maresme?",
+      opcions: ["Mataró", "Arenys de Mar", "Badalona", "Granollers"],
+      correcta: 0
+    },
+    {
+      pregunta: "Quina és la capital d'Andorra?",
+      opcions: ["Escaldes-Engordany", "Andorra la Vella", "Sant Julià de Lòria", "La Massana"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quin és el continent més fred?",
+      opcions: ["Àsia", "Europa", "Antàrtida", "Oceania"],
+      correcta: 2
+    },
+    {
+      pregunta: "Quina és la capital de la Xina?",
+      opcions: ["Xangai", "Hong Kong", "Canton", "Pequín"],
+      correcta: 3
+    },
+    {
+      pregunta: "Quin riu passa per Londres?",
+      opcions: ["Tàmesi", "Sena", "Danubi", "Rin"],
+      correcta: 0
+    },
+    {
+      pregunta: "En quin país hi ha Machu Picchu?",
+      opcions: ["Bolívia", "Perú", "Xile", "Equador"],
+      correcta: 1
+    },
+    {
+      pregunta: "Quina és la capital de Rússia?",
+      opcions: ["Sant Petersburg", "Kíiv", "Moscou", "Minsk"],
       correcta: 2
     }
   ],
