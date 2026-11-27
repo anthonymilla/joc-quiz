@@ -49,15 +49,18 @@ const formNom = document.getElementById("form-nom");
 const inputNom = document.getElementById("input-nom");
 const errorNom = document.getElementById("error-nom");
 
+// Quan s'envia el formulari inicial, valida el nom i passa a la tria de tema
 formNom.addEventListener("submit", function (event) {
-  event.preventDefault(); // perquè la pàgina no es recarregui
+  event.preventDefault(); // evita que el navegador recarregui la pàgina
 
+  // trim() treu els espais en blanc per evitar noms buits
   const nom = inputNom.value.trim();
   if (nom === "") {
     errorNom.textContent = "Has d'escriure el teu nom";
     return;
   }
 
+  // guarda el nom, el mostra a la següent pantalla i hi canvia
   errorNom.textContent = "";
   nomJugador = nom;
   document.getElementById("nom-jugador").textContent = nomJugador;
@@ -68,13 +71,15 @@ formNom.addEventListener("submit", function (event) {
 // ===== 2. Tria de tema (Anthony) =====
 const botonsTema = document.querySelectorAll("[data-tema]");
 
+// Escolta el clic a cada targeta de tema (l'atribut data-tema indica quin és)
 botonsTema.forEach(function (boto) {
   boto.addEventListener("click", function () {
     temaActual = boto.dataset.tema;
-    comencarJoc(); // aquesta funció la fa el Biel
+    comencarJoc(); // inicia la partida (funció del Biel)
   });
 });
 
+// Torna a la pantalla inicial perquè el jugador pugui canviar de nom
 document.getElementById("boto-canviar-nom").addEventListener("click", function () {
   mostrarPantalla("pantalla-inici");
   inputNom.focus();
@@ -257,7 +262,7 @@ let esperantAvis = false; // mentre es veu l'avís no es pot tornar a respondre
 // Quan passa el temps de l'avís, crida la funció "seguent".
 function mostrarAvis(triada, correcta, seguent) {
   esperantAvis = true;
-  contenidorOpcions.classList.add("bloquejades");
+  contenidorOpcions.classList.add("bloquejades"); // bloqueja clics mentre dura l'avís
 
   const botons = contenidorOpcions.querySelectorAll(".opcio");
   botons[correcta].classList.add("encertada");
@@ -278,14 +283,21 @@ function mostrarAvis(triada, correcta, seguent) {
 }
 
 // ===== 4. Resultats i tornar a jugar (Anthony) =====
+
+// Omple la pantalla de resultats amb el nom, el tema, la puntuació
+// i una línia per cada pregunta (verda si s'ha encertat, vermella si no).
+// La crida respondre() quan s'acaba l'última pregunta.
 function mostrarResultats() {
+  // dades de la partida
   document.getElementById("nom-resultats").textContent = nomJugador;
   document.getElementById("tema-resultats").textContent = nomsTemes[temaActual];
   document.getElementById("puntuacio").textContent = punts + "/" + llistaPreguntes.length;
 
+  // treure les línies d'exemple o de la partida anterior
   const resum = document.getElementById("resum");
-  resum.innerHTML = ""; // treure les línies d'exemple
+  resum.innerHTML = "";
 
+  // una línia <li> per cada resposta (la classe li posa el color)
   respostes.forEach(function (resposta) {
     const li = document.createElement("li");
     li.className = resposta.encertada ? "correcta" : "incorrecta";
@@ -306,10 +318,12 @@ function mostrarResultats() {
   mostrarPantalla("pantalla-resultats");
 }
 
+// Torna a la tria de tema mantenint el mateix nom de jugador
 document.getElementById("boto-tornar").addEventListener("click", function () {
   mostrarPantalla("pantalla-tema");
 });
 
+// Esborra el nom i l'input per començar de zero amb un altre jugador
 document.getElementById("boto-sortir").addEventListener("click", function () {
   nomJugador = "";
   inputNom.value = "";
