@@ -106,4 +106,16 @@ Icones de [Lucide](https://lucide.dev) amb traç de 2 px: copa (Esports), cobert
 
 ## Mida
 
-El disseny està pensat per a ordinador (1280 × 800 px), amb el contingut centrat i una amplada màxima de 960 px. La versió per a mòbil i tauleta es farà al seguiment 2.
+El disseny del mockup és per a ordinador (1280 × 800 px), amb el contingut centrat i una amplada màxima de 960 px. El joc també s'adapta a altres pantalles (responsive):
+
+| Pantalla | Què canvia |
+|---|---|
+| Fins a 1180 px | Les 4 targetes de tema van de 2 en 2 |
+| Tauleta (fins a 900 px) | La portada passa a una sola columna i la pregunta es fa més petita |
+| Mòbil (fins a 640 px) | Targetes de tema i respostes una sota l'altra, títols i temporitzador més petits, botons de resultats un sota l'altre i sense la pista del teclat |
+| Pantalles baixes (fins a 860 px d'alçada) | La targeta de resultats es fa més compacta perquè els botons es vegin sense scroll |
+
+## Partida
+
+- Cada tema té unes 40 preguntes i cada partida en tria **5 a l'atzar**.
+- En respondre, la resposta bona es posa **verda** i, si t'has equivocat, la teva es posa **vermella** amb una petita sacsejada. L'avís dura 1,2 segons i després es passa a la pregunta següent.

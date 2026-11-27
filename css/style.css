@@ -1026,6 +1026,54 @@ main {
   }
 }
 
+/* Pantalles baixes (portàtils): la targeta de resultats es fa més compacta
+   perquè els botons es vegin sense haver de fer scroll */
+@media (max-height: 860px) and (min-width: 641px) {
+  #pantalla-resultats {
+    padding-top: 24px;
+    padding-bottom: 16px;
+  }
+
+  .targeta-resultats {
+    padding: 26px 36px;
+  }
+
+  .targeta-resultats h2 {
+    font-size: 30px;
+  }
+
+  .cercle-puntuacio {
+    width: 116px;
+    height: 116px;
+    margin-top: 14px;
+  }
+
+  #puntuacio {
+    width: 94px;
+    height: 94px;
+    font-size: 32px;
+  }
+
+  .text-puntuacio {
+    margin-top: 6px;
+    font-size: 16px;
+  }
+
+  .resum {
+    margin-top: 14px;
+    gap: 6px;
+  }
+
+  .resum li {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .botons {
+    margin-top: 16px;
+  }
+}
+
 /* Mòbils molt estrets */
 @media (max-width: 380px) {
   .titol-joc {
